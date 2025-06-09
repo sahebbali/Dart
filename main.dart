@@ -18,8 +18,10 @@ void main() {
   // Create a Person object
   Person person1 = Person('Saheb', 25);
   Person person2 = Person('sajid', 15);
+  Person person3 = Person('Jakir', 15);
 
   // Call method to display info
   person1.displayInfo();
   person2.displayInfo();
+  person3.displayInfo();
 }
