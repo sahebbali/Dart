@@ -24,15 +24,58 @@
 //   var person3 = Person.guest();
 //   person3.showOutput();
 // }
-void main() {
-  final String person1 = 'Jack';
-  const String person2 = 'Jill'; // compile time constant
+// void main() {
+//   final String person1 = 'Jack';
+//   const String person2 = 'Jill'; // compile time constant
 
-  print(person1);
-  print(person2);
-}
-
-
+//   print(person1);
+//   print(person2);
+// }
 // can not reassign
 // person1 = 'aa';
 // person2 = 'bb';
+
+// class X {
+//   final name; // type will be defined by inferred value
+//   static const int age = 10;
+
+//   X(this.name);
+// }
+
+// main() {
+//   var x = X('Jack');
+//   print(x.name);
+//   print(X.age); // use Classname.StaticVariable
+// }
+
+// Class Inheritance
+class Vehicle {
+  String model;
+  int year;
+
+  Vehicle(this.model, this.year) {
+    print(this.model);
+    print(this.year);
+  }
+
+  void showOutput() {
+    print(model);
+    print(year);
+  }
+}
+
+class Car extends Vehicle {
+  double price;
+
+  Car(String model, int year, this.price) : super(model, year);
+
+  void showOutput() {
+    super.showOutput();
+    print(this.price);
+  }
+}
+
+void main() {
+  var car1 = Car('Accord', 2014, 150000);
+  car1.showOutput();
+}
