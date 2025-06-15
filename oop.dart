@@ -49,33 +49,68 @@
 // }
 
 // Class Inheritance
-class Vehicle {
-  String model;
-  int year;
+// class Vehicle {
+//   String model;
+//   int year;
 
-  Vehicle(this.model, this.year) {
-    print(this.model);
-    print(this.year);
-  }
+//   Vehicle(this.model, this.year) {
+//     print(this.model);
+//     print(this.year);
+//   }
+
+//   void showOutput() {
+//     print(model);
+//     print(year);
+//   }
+// }
+
+// class Car extends Vehicle {
+//   double price;
+
+//   Car(String model, int year, this.price) : super(model, year);
+
+//   void showOutput() {
+//     super.showOutput();
+//     print(this.price);
+//   }
+// }
+
+// void main() {
+//   var car1 = Car('Accord', 2014, 150000);
+//   car1.showOutput();
+// }
+
+class X {
+  String name;
+
+  X(this.name);
 
   void showOutput() {
-    print(model);
-    print(year);
+    print(this.name);
+  }
+
+  dynamic square(dynamic val) {
+    return val * val;
   }
 }
 
-class Car extends Vehicle {
-  double price;
+class Y extends X {
+  Y(String name) : super(name);
 
-  Car(String model, int year, this.price) : super(model, year);
-
+  @override
   void showOutput() {
-    super.showOutput();
-    print(this.price);
+    print(this.name);
+    print('Hello');
+  }
+
+  // not using @override at this time
+  dynamic square(dynamic val) {
+    return val * val + 2;
   }
 }
 
 void main() {
-  var car1 = Car('Accord', 2014, 150000);
-  car1.showOutput();
+  var obj = Y('Jack');
+  obj.showOutput();
+  print(obj.square(2));
 }
