@@ -136,39 +136,70 @@
 
 // Abstract Class and Abstract Method
 
-abstract class Human {
-  final String _type;
+// abstract class Human {
+//   final String _type;
 
-  Human(this._type);
+//   Human(this._type);
 
-  void showType();
-}
+//   void showType();
+// }
 
-class Man extends Human {
-  Man(String type) : super(type);
+// class Man extends Human {
+//   Man(String type) : super(type);
 
-  void showType() {
-    print(_type);
+//   void showType() {
+//     print(_type);
+//   }
+// }
+
+// class Woman extends Human {
+//   Woman(String type) : super(type);
+
+//   void showType() {
+//     print(_type);
+//   }
+// }
+
+// void main() {
+//   // polymorphism
+//   Human human;
+//   Man person1 = Man('man');
+//   Woman person2 = Woman('woman');
+
+//   human = person1;
+//   human.showType();
+
+//   human = person2;
+//   human.showType();
+// }
+
+// Mixins
+
+class Robot {
+  void perform() {
+    print("Performing");
   }
 }
 
-class Woman extends Human {
-  Woman(String type) : super(type);
+mixin Walk {
+  void perform() {
+    print("Walking");
+  }
+}
 
-  void showType() {
-    print(_type);
+mixin Run {
+  void perform() {
+    print("Running");
+  }
+}
+
+class IRobo extends Robot with Walk, Run {
+  void showActivity() {
+    perform();
   }
 }
 
 void main() {
-  // polymorphism
-  Human human;
-  Man person1 = Man('man');
-  Woman person2 = Woman('woman');
-
-  human = person1;
-  human.showType();
-
-  human = person2;
-  human.showType();
+  IRobo robo = IRobo();
+  robo.showActivity();
 }
