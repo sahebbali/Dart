@@ -80,37 +80,96 @@
 //   car1.showOutput();
 // }
 
-class X {
-  String name;
+// class X {
+//   String name;
 
-  X(this.name);
+//   X(this.name);
 
-  void showOutput() {
-    print(this.name);
+//   void showOutput() {
+//     print(this.name);
+//   }
+
+//   dynamic square(dynamic val) {
+//     return val * val;
+//   }
+// }
+
+// class Y extends X {
+//   Y(String name) : super(name);
+
+//   @override
+//   void showOutput() {
+//     print(this.name);
+//     print('Hello');
+//   }
+
+//   // not using @override at this time
+//   dynamic square(dynamic val) {
+//     return val * val + 2;
+//   }
+// }
+
+// void main() {
+//   var obj = Y('Jack');
+//   obj.showOutput();
+//   print(obj.square(2));
+// }
+
+// class Rectangle {
+//   num left, top, width, height;
+
+//   Rectangle(this.left, this.top, this.width, this.height);
+
+//   // Define two calculated properties: right and bottom.
+//   num get right => left + width;
+//   set right(num value) => left = value - width;
+//   num get bottom => top + height;
+//   set bottom(num value) => top = value - height;
+// }
+
+// void main() {
+//   var rect = Rectangle(3, 4, 20, 15);
+//   assert(rect.left == 3);
+//   rect.right = 12;
+//   assert(rect.left == -8);
+// }
+
+// Abstract Class and Abstract Method
+
+abstract class Human {
+  String _type;
+
+  void showType();
+}
+
+class Man extends Human {
+  Man(String type) {
+    _type = type;
   }
-
-  dynamic square(dynamic val) {
-    return val * val;
+  void showType() {
+    print(_type);
   }
 }
 
-class Y extends X {
-  Y(String name) : super(name);
-
-  @override
-  void showOutput() {
-    print(this.name);
-    print('Hello');
+class Woman extends Human {
+  Woman(String type) {
+    _type = type;
   }
 
-  // not using @override at this time
-  dynamic square(dynamic val) {
-    return val * val + 2;
+  void showType() {
+    print(_type);
   }
 }
 
 void main() {
-  var obj = Y('Jack');
-  obj.showOutput();
-  print(obj.square(2));
+  // polymorphism
+  Human human;
+  Man person1 = Man('man');
+  Woman person2 = Woman('woman');
+
+  human = person1;
+  human.showType();
+
+  human = person2;
+  human.showType();
 }

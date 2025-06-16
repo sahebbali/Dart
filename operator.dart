@@ -44,8 +44,8 @@ void main() {
   print(name); // Assigned
 
   // ?. (null-aware access)
-  print(name?.length); // 8
+  print(name.length); // 8
 
   // ! (non-null assertion)
-  print(name!.toUpperCase()); // ASSIGNED
+  print(name.toUpperCase()); // ASSIGNED
 }
