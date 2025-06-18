@@ -20,12 +20,40 @@
 //   print(distance);
 // }
 
-enum Color { red, green, blue }
+// enum Color { red, green, blue }
+
+// void main() {
+//   var color = Color.blue;
+
+//   if (color == Color.blue) {
+//     print('Blue is selected');
+//   }
+// }
+
+bool topLevel = true; // Global variable
 
 void main() {
-  var color = Color.blue;
+  var insideMain = true;
 
-  if (color == Color.blue) {
-    print('Blue is selected');
+  void myFunction() {
+    var insideFunction = true;
+
+    void nestedFunction() {
+      var insideNestedFunction = true;
+
+      // Assertions to check the visibility of variables
+      assert(topLevel, 'topLevel is not accessible');
+      assert(insideMain, 'insideMain is not accessible');
+      assert(insideFunction, 'insideFunction is not accessible');
+      assert(insideNestedFunction, 'insideNestedFunction is not accessible');
+
+      print('All assertions passed in nestedFunction.');
+    }
+
+    nestedFunction(); // Call nestedFunction inside myFunction
   }
+
+  myFunction(); // Call myFunction inside main
 }
+
+//   nestedFunction(); // This will cause an error because nestedFunction is not in scope here
