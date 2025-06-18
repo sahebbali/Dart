@@ -30,30 +30,52 @@
 //   }
 // }
 
-bool topLevel = true; // Global variable
+// bool topLevel = true; // Global variable
 
-void main() {
-  var insideMain = true;
+// void main() {
+//   var insideMain = true;
 
-  void myFunction() {
-    var insideFunction = true;
+//   void myFunction() {
+//     var insideFunction = true;
 
-    void nestedFunction() {
-      var insideNestedFunction = true;
+//     void nestedFunction() {
+//       var insideNestedFunction = true;
 
-      // Assertions to check the visibility of variables
-      assert(topLevel, 'topLevel is not accessible');
-      assert(insideMain, 'insideMain is not accessible');
-      assert(insideFunction, 'insideFunction is not accessible');
-      assert(insideNestedFunction, 'insideNestedFunction is not accessible');
+//       // Assertions to check the visibility of variables
+//       assert(topLevel, 'topLevel is not accessible');
+//       assert(insideMain, 'insideMain is not accessible');
+//       assert(insideFunction, 'insideFunction is not accessible');
+//       assert(insideNestedFunction, 'insideNestedFunction is not accessible');
 
-      print('All assertions passed in nestedFunction.');
-    }
+//       print('All assertions passed in nestedFunction.');
+//     }
 
-    nestedFunction(); // Call nestedFunction inside myFunction
-  }
+//     nestedFunction(); // Call nestedFunction inside myFunction
+//   }
 
-  myFunction(); // Call myFunction inside main
-}
+//   myFunction(); // Call myFunction inside main
+// }
 
 //   nestedFunction(); // This will cause an error because nestedFunction is not in scope here
+
+// Function type, dynamic also works
+Function makeAdder(int initial) {
+  int total = initial;
+
+  // nested function
+  int addToTotal(int addBy) {
+    total += addBy;
+    return total;
+  }
+
+  return addToTotal;
+}
+
+void main() {
+  var adder = makeAdder(2);
+  var val = adder(5);
+  print(val);
+
+  val = adder(3);
+  print(val);
+}
